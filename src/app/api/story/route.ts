@@ -36,7 +36,7 @@ If this is Act 3/3, make sure to resolve the story and end it satisfyingly.
 `;
 
   const chat = await openai.chat.completions.create({
-    model: 'gpt-3.5-turbo',
+    model: 'gpt-4o-mini',
     messages: [{ role: 'user', content: prompt }],
   });
 
