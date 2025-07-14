@@ -1,0 +1,36 @@
+{
+  "kids": {
+    "people": [
+      "princess.png", "fireman.png", "police_officer.png", "doctor.png", "mom.png",
+      "dad.png", "girl.png", "boy.png", "astronaut.png", "bank_robber.png",
+      "ballerina.png", "mermaid.png", "farmer.png", "construction_worker.png", "pilot.png",
+      "wizard.png", "alien.png", "pirate.png", "superhero.png", "giant.png"
+    ],
+    "places": [
+      "castle.png", "spaceship.png", "pirate_ship.png", "forest.png", "desert.png",
+      "north_pole.png", "underwater_city.png", "jungle.png", "volcano.png", "moon_base.png",
+      "candy_land.png", "mountain_peak.png", "hidden_cave.png", "farm.png", "busy_city_street.png",
+      "amusement_park.png", "magic_school.png", "haunted_house.png", "train_station.png", "floating_island.png"
+    ],
+    "things": [
+      "sword.png", "fairy_wand.png", "phone.png", "car.png", "helicopter.png",
+      "motorcycle.png", "submarine.png", "toaster.png", "magic_book.png", "backpack.png",
+      "time_machine.png", "robot.png", "giant_key.png", "treasure_chest.png", "bubble_blower.png",
+      "pizza.png", "invisible_cloak.png", "boomerang.png", "rubber_duck.png", "jetpack.png"
+    ]
+  },
+  "adult": {
+    "people": [
+      "accountant.png", "hr_rep.png", "cult_leader.png", "ex_boyfriend.png", "disgraced_politician.png",
+      "ghost_of_steve_jobs.png", "barista.png", "failed_reality_tv_star.png", "private_investigator.png", "evil_twin.png"
+    ],
+    "places": [
+      "corporate_boardroom.png", "dive_bar_bathroom.png", "vegas_chapel.png", "apocalypse_bunker.png", "ikea_showroom.png",
+      "crime_scene.png", "rooftop_at_midnight.png", "hr_department.png", "speakeasy.png", "therapists_office.png"
+    ],
+    "things": [
+      "flask_of_whiskey.png", "nda.png", "divorce_papers.png", "chainsaw.png", "crypto_wallet.png",
+      "espresso_machine.png", "a_very_large_check.png", "unread_email.png", "mascot_costume.png", "shovel.png"
+    ]
+  }
+}
