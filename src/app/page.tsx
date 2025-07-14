@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import imageLists from '../data/imagelists.json';
 
 function getRandomChoices(arr: string[], count: number) {
@@ -14,9 +15,6 @@ export default function Home() {
   const [authCode, setAuthCode] = useState('');
   const [authError, setAuthError] = useState(false);
 
-  const mode = adultMode ? 'adult' : 'kids';
-  const modeFolder = adultMode ? 'adult_mode' : 'kid_mode';
-
   const [people, setPeople] = useState<string[]>([]);
   const [places, setPlaces] = useState<string[]>([]);
   const [things, setThings] = useState<string[]>([]);
@@ -29,6 +27,9 @@ export default function Home() {
   const [storyParts, setStoryParts] = useState<string[]>([]);
   const [actNumber, setActNumber] = useState(1);
   const [loading, setLoading] = useState(false);
+
+  const mode = adultMode ? 'adult' : 'kids';
+  const modeFolder = adultMode ? 'adult_mode' : 'kid_mode';
 
   const storyTypes = ['Fairytale', 'Mystery', 'Adventure', 'Sci-Fi'];
 
@@ -46,12 +47,12 @@ export default function Home() {
   }, [adultMode]);
 
   const handleAdultToggle = () => {
-    if (adultMode) {
-      setAdultMode(false);
-    } else {
+    if (!adultMode) {
       setAuthRequested(true);
       setAuthCode('');
       setAuthError(false);
+    } else {
+      setAdultMode(false);
     }
   };
 
@@ -68,7 +69,6 @@ export default function Home() {
 
   const generateStory = async () => {
     if (actNumber > 3) {
-      // restart everything
       setStoryParts([]);
       setActNumber(1);
       reshuffle();
@@ -107,7 +107,7 @@ export default function Home() {
       setSelectedPlace(null);
       setSelectedThing(null);
     } else {
-      setActNumber(4); // story complete
+      setActNumber(4);
     }
   };
 
@@ -132,6 +132,49 @@ export default function Home() {
       >
         Choose Your Own Adventure
       </h1>
+
+      <section style={{ marginBottom: '2rem', textAlign: 'center' }}>
+        <button
+          onClick={handleAdultToggle}
+          style={{
+            padding: '0.5rem 1rem',
+            backgroundColor: adultMode ? '#f39c12' : '#3498db',
+            color: '#fff',
+            border: 'none',
+            borderRadius: '20px',
+            cursor: 'pointer',
+          }}
+        >
+          Toggle Adult Mode ({adultMode ? 'ON' : 'OFF'})
+        </button>
+      </section>
+
+      {authRequested && (
+        <div style={{ marginTop: '2rem', textAlign: 'center' }}>
+          <h3>Enter Passcode to Unlock Adult Mode</h3>
+          <input
+            type="password"
+            value={authCode}
+            onChange={(e) => setAuthCode(e.target.value)}
+            style={{ padding: '0.5rem', borderRadius: '6px', border: '1px solid #ccc' }}
+          />
+          <button
+            onClick={handleAuthSubmit}
+            style={{
+              marginLeft: '1rem',
+              padding: '0.5rem 1rem',
+              backgroundColor: '#0070f3',
+              color: '#fff',
+              border: 'none',
+              borderRadius: '6px',
+              cursor: 'pointer',
+            }}
+          >
+            Submit
+          </button>
+          {authError && <p style={{ color: 'red' }}>Incorrect code. Try again.</p>}
+        </div>
+      )}
 
       <section style={{ marginBottom: '2rem', textAlign: 'center' }}>
         <h2 style={{ fontSize: '1.25rem', color: '#555' }}>Story Type</h2>
@@ -217,23 +260,23 @@ export default function Home() {
       </section>
 
       {storyParts.length > 0 && (
-  <section
-    style={{
-      maxWidth: '800px',
-      margin: '2rem auto',
-      background: '#fff',
-      padding: '1rem',
-      borderRadius: '8px',
-      boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
-    }}
-  >
-    {storyParts.map((part, idx) => (
-      <p key={idx} style={{ whiteSpace: 'pre-wrap' }}>
-        {part}
-      </p>
-    ))}
-  </section>
-)}
+        <section
+          style={{
+            maxWidth: '800px',
+            margin: '2rem auto',
+            background: '#fff',
+            padding: '1rem',
+            borderRadius: '8px',
+            boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
+          }}
+        >
+          {storyParts.map((part, idx) => (
+            <p key={idx} style={{ whiteSpace: 'pre-wrap' }}>
+              {part}
+            </p>
+          ))}
+        </section>
+      )}
     </main>
   );
 }
@@ -301,14 +344,12 @@ function CategorySection({
                 marginBottom: '0.25rem',
               }}
             >
-              <img
+              <Image
                 src={`/images/${modeFolder}/${img}`}
                 alt={img}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                }}
+                width={100}
+                height={100}
+                style={{ objectFit: 'cover' }}
               />
             </div>
             <div
