@@ -1,5 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Choose Your Own Adventure',
@@ -23,8 +24,28 @@ export default function RootLayout({
           minHeight: '100vh',
           display: 'flex',
           flexDirection: 'column',
+          position: 'relative',
         }}
       >
+        {/* Smiledust Logo — absolute top-right */}
+        <Link
+          href="https://smiledust.com"
+          style={{
+            position: 'absolute',
+            top: '1rem',
+            left: '1rem',
+            textDecoration: 'none',
+            color: '#ec4899',
+            fontSize: '1.5rem',
+            fontWeight: 'bold',
+            fontFamily: `'Pacifico', cursive`,
+            zIndex: 1000,
+          }}
+          className="smiledust-font"
+        >
+          smiledust
+        </Link>
+
         <main style={{ flex: 1 }}>{children}</main>
 
         <footer
@@ -36,7 +57,7 @@ export default function RootLayout({
             color: '#555',
           }}
         >
-          © {new Date().getFullYear()} absurdical. All rights reserved.
+          © {new Date().getFullYear()} smiledust. All rights reserved.
         </footer>
       </body>
     </html>
