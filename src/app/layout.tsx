@@ -27,7 +27,7 @@ export default function RootLayout({
           position: 'relative',
         }}
       >
-        {/* Smiledust Logo — absolute top-right */}
+        {/* Smiledust Logo — absolute top-left */}
         <Link
           href="https://smiledust.com"
           style={{
@@ -46,7 +46,15 @@ export default function RootLayout({
           smiledust
         </Link>
 
-        <main style={{ flex: 1 }}>{children}</main>
+        {/* Main Content */}
+        <main
+          style={{
+            flex: 1,
+            paddingTop: '3rem', // 🪄 adds space for the floated logo
+          }}
+        >
+          {children}
+        </main>
 
         <footer
           style={{
