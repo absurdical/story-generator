@@ -151,7 +151,7 @@ export default function Home() {
 
       {authRequested && (
         <div style={{ marginTop: '2rem', textAlign: 'center' }}>
-          <h3>Enter Passcode to Unlock Adult Mode</h3>
+          <h3>The password is "adult" in T9</h3>
           <input
             type="password"
             value={authCode}
